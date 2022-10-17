@@ -37,6 +37,8 @@ runs:
     - id: vulcan-cat
       if: ${{ always() }}
       run: |
+        echo "critical=$(cat result.txt|grep 'CRITICAL·' | grep -oP '\d*')"
+        echo "high=$(cat result.txt|grep 'HIGH·' | grep -oP '\d*')"
         echo "critical=$(cat result.txt|grep 'CRITICAL·' | grep -oP '\d*')" >> $GITHUB_ENV
         echo "high=$(cat result.txt|grep 'HIGH·' | grep -oP '\d*')" >> $GITHUB_ENV
       shell: bash
