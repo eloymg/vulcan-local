@@ -37,8 +37,8 @@ runs:
     - id: vulcan-cat
       if: ${{ always() }}
       run: |
-        echo "critical=$(cat result.txt|ggrep 'CRITICAL·' | grep -oP '\d*')" >> $GITHUB_ENV
-        echo "high=$(cat result.txt|ggrep 'HIGH·' | grep -oP '\d*')" >> $GITHUB_ENV
+        echo "critical=$(cat result.txt|grep 'CRITICAL·' | grep -oP '\d*')" >> $GITHUB_ENV
+        echo "high=$(cat result.txt|grep 'HIGH·' | grep -oP '\d*')" >> $GITHUB_ENV
       shell: bash
     - uses: actions/github-script@v6
       id: vulcan-local-result-comment
