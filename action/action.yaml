@@ -28,7 +28,7 @@ runs:
       shell: bash
     - id: vulcan-local-run-only-repository
       if: ${{ inputs.only-repository == 'true' }}
-      run: vulcan-local -t . -checktypes ${{ inputs.checktypes }} -l ${{ inputs.log-level}} -r vulcan-local.json ${{ inputs.other-options }}
+      run: vulcan-local -t . -checktypes ${{ inputs.checktypes }} -l ${{ inputs.log-level}} ${{ inputs.other-options }} > result.txt
       shell: bash
     - id: vulcan-local-run
       if: ${{ inputs.only-repository == 'false' }}
@@ -36,7 +36,7 @@ runs:
       shell: bash
     - id: vulcan-cat
       if: ${{ always() }}
-      run: cat vulcan-local.json
+      run: cat result.txt
       shell: bash
     - uses: actions/github-script@v6
       id: vulcan-local-result-comment
