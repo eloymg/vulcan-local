@@ -28,7 +28,7 @@ runs:
       shell: bash
     - id: vulcan-local-run-only-repository
       if: ${{ inputs.only-repository == 'true' }}
-      run: vulcan-local -t . -checktypes ${{ inputs.checktypes }} -l ${{ inputs.log-level}} ${{ inputs.other-options }} > result.txt
+      run: vulcan-local -t . -checktypes ${{ inputs.checktypes }} -l ${{ inputs.log-level}} ${{ inputs.other-options }} 2> result.txt
       shell: bash
     - id: vulcan-local-run
       if: ${{ inputs.only-repository == 'false' }}
